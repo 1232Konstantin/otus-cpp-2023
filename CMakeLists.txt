@@ -14,13 +14,25 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 project ("CMakeProj" VERSION ${PROJECT_VESRION})
 
+configure_file(version.h.in version.h)
+
 # Add source to this project's executable.
-add_executable (CMakeProj "CMakeProj.cpp" "CMakeProj.h")
+add_executable (CMakeProj "CMakeProj.cpp")
+add_library(CMakeProj_lib "lib.cpp")
 
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME}-${PROJECT_VESRION})
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CMakeProj PROPERTY CXX_STANDARD 20)
+  set_property(TARGET CMakeProj_lib PROPERTY CXX_STANDARD 20)
 endif()
+
+target_include_directories(helloworld
+    PRIVATE "${CMAKE_BINARY_DIR}"
+)
+
+target_link_libraries(CMakeProj PRIVATE
+    CMakeProj_lib
+)
 
 # TODO: Add tests and install targets if needed.

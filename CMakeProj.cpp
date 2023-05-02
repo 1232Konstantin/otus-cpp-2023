@@ -1,12 +1,13 @@
 ﻿// CMakeProj.cpp : Defines the entry point for the application.
 //
 
-#include "CMakeProj.h"
+#include "lib.h"
 
-using namespace std;
+#include <iostream>
 
 int main()
 {
-	cout << "Hello CMake." << endl;
-	return 0;
+	std::cout << "Version: " << version() << std::endl;
+    std::cout << "Hello, world!" << std::endl;
+    return 0;
 }
