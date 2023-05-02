@@ -9,7 +9,10 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
-project ("CMakeProj")
+set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
+set(PROJECT_VESRION 0.0.${PATCH_VERSION})
+
+project ("CMakeProj" VERSION ${PROJECT_VESRION})
 
 # Add source to this project's executable.
 add_executable (CMakeProj "CMakeProj.cpp" "CMakeProj.h")
