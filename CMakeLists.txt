@@ -17,6 +17,8 @@ project ("CMakeProj" VERSION ${PROJECT_VESRION})
 # Add source to this project's executable.
 add_executable (CMakeProj "CMakeProj.cpp" "CMakeProj.h")
 
+set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME}-${PROJECT_VESRION})
+
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CMakeProj PROPERTY CXX_STANDARD 20)
 endif()
