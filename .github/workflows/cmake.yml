@@ -53,4 +53,4 @@ jobs:
 
 
     - name: Upload Release Asset
-      run: dir /s /b
+      run: Get-ChildItem -Recurse | Select-Object -ExpandProperty FullName
