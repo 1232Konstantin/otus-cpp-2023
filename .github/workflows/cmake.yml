@@ -43,4 +43,4 @@ jobs:
         name: Release ${{ github.run_number }}
         tag_name: ${{ github.run_number }}
         files: |
-          *.exe
+          ./build/Release/*.exe
