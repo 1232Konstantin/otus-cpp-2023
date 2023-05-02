@@ -36,18 +36,15 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}
 
- #   - name: Create Release
- #     id: create_release
-  #    uses: marvinpinto/action-automatic-releases@latest
-  #    env:
-  #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #    with:
-  #      repo_token: "${{ secrets.GITHUB_TOKEN }}"
-  #      prerelease: false
-  #      automatic_release_tag: ${{ github.run_number }}
-  #      title: Release ${{ github.run_number }}
-   #     files: |
-
-
-    - name: Upload Release Asset
-      run: Get-ChildItem -Recurse | Select-Object -ExpandProperty FullName
+    - name: Create Release
+      id: create_release
+      uses: marvinpinto/action-automatic-releases@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: false
+        automatic_release_tag: ${{ github.run_number }}
+        title: Release ${{ github.run_number }}
+        files: |
+          ${{github.workspace}}/build/Release/CMakeProj-0.0.${{ github.run_number }}.exe
