@@ -42,4 +42,5 @@ jobs:
       with:
         name: Release ${{ github.run_number }}
         tag_name: ${{ github.run_number }}
-        files: *.exe
+        files: |
+          *.exe
