@@ -1,6 +1,8 @@
 
 #include <gtest/gtest.h>
 
-TEST(ABC, TEST1) {
-  EXPECT_EQ(true, true);
+#include "lib.h"
+
+TEST(CMakeProj, VersionIsGreaterThanZero) {
+	EXPECT_GT(version(), 0);
 }
