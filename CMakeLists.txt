@@ -35,4 +35,14 @@ target_link_libraries(CMakeProj PRIVATE
     CMakeProj_lib
 )
 
-# TODO: Add tests and install targets if needed.
+#Testing
+
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+add_executable( CMakeProj_test tests.cpp)
+
+target_link_libraries(CMakeProj_test ${GTEST_BOTH_LIBRARIES})
+
+enable_testing()
+add_test( CMakeProj_test CMakeProj_test )
