@@ -1,129 +1,110 @@
-#include <cassert>
-#include <cstdlib>
-#include <iostream>
+#include <tuple>
 #include <string>
+#include <array>
 #include <vector>
+#include <algorithm>
+#include <iostream>
 
-// ("",  '.') -> [""]
-// ("11", '.') -> ["11"]
-// ("..", '.') -> ["", "", ""]
-// ("11.", '.') -> ["11", ""]
-// (".11", '.') -> ["", "11"]
-// ("11.22", '.') -> ["11", "22"]
-std::vector<std::string> split(const std::string &str, char d)
+typedef std::tuple<uint8_t, uint8_t, uint8_t, uint8_t> IpAddress;
+
+IpAddress ParseIpAddress(const std::string& AddressStr)
 {
-    std::vector<std::string> r;
+  constexpr char ADDRESS_DELIM = '.';
 
-    std::string::size_type start = 0;
-    std::string::size_type stop = str.find_first_of(d);
-    while(stop != std::string::npos)
-    {
-        r.push_back(str.substr(start, stop - start));
+  std::array<uint8_t, std::tuple_size<IpAddress>::value> TempContainer{};
+  std::string::size_type Start = 0;
+  auto Stop = AddressStr.find_first_of(ADDRESS_DELIM);
 
-        start = stop + 1;
-        stop = str.find_first_of(d, start);
-    }
+  for (uint8_t i = 0; i < TempContainer.size(); ++i)
+  {
+    TempContainer[i] = static_cast<uint8_t>(std::stoi(AddressStr.substr(Start, Stop - Start)));
+    Start = Stop + 1;
+    Stop = AddressStr.find_first_of(ADDRESS_DELIM, Start);
+  }
 
-    r.push_back(str.substr(start));
-
-    return r;
+  // need some template magic to cast array or vector to tuple
+  return { TempContainer[0], TempContainer[1], TempContainer[2], TempContainer[3] };
 }
 
-int main(int argc, char const *argv[])
+std::istream& operator>>(std::istream& is, std::vector<IpAddress>& IpPool)
 {
-    try
+  std::string Line;
+
+  while (std::getline(is, Line))
+  {
+    auto AddressEnd = Line.find_first_of('\t');
+    auto AddressStr = Line.substr(0, AddressEnd);
+    IpPool.push_back(ParseIpAddress(AddressStr));
+  }
+
+  return is;
+}
+
+std::ostream& operator<<(std::ostream& os, const IpAddress& Ip)
+{
+  os << static_cast<int>(std::get<0>(Ip)) << '.' 
+    << static_cast<int>(std::get<1>(Ip)) << '.'
+    << static_cast<int>(std::get<2>(Ip)) << '.'
+    << static_cast<int>(std::get<3>(Ip));
+  return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const std::vector<IpAddress>& IpPool)
+{
+  bool isLineBreak = false;
+  for (const auto& Ip : IpPool)
+  {
+    if (isLineBreak)
     {
-        std::vector<std::vector<std::string> > ip_pool;
-
-        for(std::string line; std::getline(std::cin, line);)
-        {
-            std::vector<std::string> v = split(line, '\t');
-            ip_pool.push_back(split(v.at(0), '.'));
-        }
-
-        // TODO reverse lexicographically sort
-
-        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
-        {
-            for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
-            {
-                if (ip_part != ip->cbegin())
-                {
-                    std::cout << ".";
-
-                }
-                std::cout << *ip_part;
-            }
-            std::cout << std::endl;
-        }
-
-        // 222.173.235.246
-        // 222.130.177.64
-        // 222.82.198.61
-        // ...
-        // 1.70.44.170
-        // 1.29.168.152
-        // 1.1.234.8
-
-        // TODO filter by first byte and output
-        // ip = filter(1)
-
-        // 1.231.69.33
-        // 1.87.203.225
-        // 1.70.44.170
-        // 1.29.168.152
-        // 1.1.234.8
-
-        // TODO filter by first and second bytes and output
-        // ip = filter(46, 70)
-
-        // 46.70.225.39
-        // 46.70.147.26
-        // 46.70.113.73
-        // 46.70.29.76
-
-        // TODO filter by any byte and output
-        // ip = filter_any(46)
-
-        // 186.204.34.46
-        // 186.46.222.194
-        // 185.46.87.231
-        // 185.46.86.132
-        // 185.46.86.131
-        // 185.46.86.131
-        // 185.46.86.22
-        // 185.46.85.204
-        // 185.46.85.78
-        // 68.46.218.208
-        // 46.251.197.23
-        // 46.223.254.56
-        // 46.223.254.56
-        // 46.182.19.219
-        // 46.161.63.66
-        // 46.161.61.51
-        // 46.161.60.92
-        // 46.161.60.35
-        // 46.161.58.202
-        // 46.161.56.241
-        // 46.161.56.203
-        // 46.161.56.174
-        // 46.161.56.106
-        // 46.161.56.106
-        // 46.101.163.119
-        // 46.101.127.145
-        // 46.70.225.39
-        // 46.70.147.26
-        // 46.70.113.73
-        // 46.70.29.76
-        // 46.55.46.98
-        // 46.49.43.85
-        // 39.46.86.85
-        // 5.189.203.46
+      os << '\n';
     }
-    catch(const std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+    os << Ip;
+    isLineBreak = true;
+  }
+  return os;
+}
 
-    return 0;
+int main()
+{
+  std::vector<IpAddress> IpPool;
+  std::cin >> IpPool;
+  
+  // 1. Reverse lexicographical order
+  std::sort(IpPool.begin(), IpPool.end(), std::greater<>());
+  std::cout << IpPool << std::endl;
+
+  // 2. only begin with 1
+  {
+    decltype(IpPool) FilteredIpPool;
+    std::copy_if(IpPool.begin(), IpPool.end(), std::back_inserter(FilteredIpPool), [](const auto& Elem)
+      {
+        return std::get<0>(Elem) == 1;
+      }
+    );
+    std::cout << FilteredIpPool << std::endl;
+  }
+
+  // 3. only begin with 46 and second is 70
+  {
+    decltype(IpPool) FilteredIpPool;
+    std::copy_if(IpPool.begin(), IpPool.end(), std::back_inserter(FilteredIpPool), [](const auto& Elem)
+      {
+        return std::get<0>(Elem) == 46 && std::get<1>(Elem) == 70;
+      }
+    );
+    std::cout << FilteredIpPool << std::endl;
+  }
+
+  // 4. any part is 46
+  {
+    decltype(IpPool) FilteredIpPool;
+    std::copy_if(IpPool.begin(), IpPool.end(), std::back_inserter(FilteredIpPool), [](const auto& Elem)
+      {
+        return std::get<0>(Elem) == 46 || std::get<1>(Elem) == 46 || std::get<2>(Elem) == 46 || std::get<3>(Elem) == 46;
+      }
+    );
+    std::cout << FilteredIpPool << std::endl;
+  }
+
+  return 0;
 }
