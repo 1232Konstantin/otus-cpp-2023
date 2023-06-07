@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <iostream>
 
+
 typedef std::array<uint8_t, 4> IpAddress;
 
 IpAddress ParseIpAddress(const std::string& AddressStr)
