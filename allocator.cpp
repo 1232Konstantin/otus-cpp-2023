@@ -2,6 +2,6 @@
 
 int main()
 {
-  std::cout << "todo allocator logic " << std::endl;
+  std::cout << "todo allocator logic" << std::endl;
   return 0;
 }
