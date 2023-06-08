@@ -48,9 +48,3 @@ namespace Timus
     out << total;
   }
 }
-
-int main()
-{
-  Timus::task1787(std::cin, std::cout);
-  return 0;
-}
