@@ -25,6 +25,10 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Timus_lib PROPERTY CXX_STANDARD 20)
 endif()
 
+target_link_libraries(Allocator PRIVATE
+    Timus_lib
+)
+
 #Testing
 
 include(FetchContent)
