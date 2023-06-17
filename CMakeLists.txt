@@ -21,8 +21,8 @@ add_library(Timus_lib "timus.cpp")
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME}-${PROJECT_VESRION})
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET Allocator PROPERTY CXX_STANDARD 20)
-  set_property(TARGET Timus_lib PROPERTY CXX_STANDARD 20)
+  set_property(TARGET Allocator PROPERTY CXX_STANDARD 17)
+  set_property(TARGET Timus_lib PROPERTY CXX_STANDARD 17)
 endif()
 
 target_link_libraries(Allocator PRIVATE
