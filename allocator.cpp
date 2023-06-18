@@ -79,15 +79,6 @@ struct TCustomAllocator {
     addresses.push(p);
   }
 
-  template <class Up, class... Args>
-  void construct(Up* p, Args&&... args) {
-    ::new ((void*)p) Up(std::forward<Args>(args)...);
-  }
-
-  void destroy(pointer p) {
-    p->~T();
-  }
-
   template <class U>
   struct rebind
   {
@@ -125,7 +116,9 @@ private:
 
   Node* _head = nullptr;
   Node* _last = nullptr;
-  typename Allocator::template rebind<Node>::other _allocator;
+
+  using NodeAllocator = typename std::allocator_traits<Allocator>::template rebind_alloc<Node>;
+  NodeAllocator _allocator;
 
 public:
 
@@ -175,7 +168,7 @@ public:
   void push(const T& x)
   {
     Node* node = _allocator.allocate(1);
-    _allocator.construct(node, x);
+    std::allocator_traits<NodeAllocator>::construct(_allocator, node, x);
 
     if (_head == nullptr)
     {
@@ -196,7 +189,7 @@ public:
     while (current)
     {
       auto next = current->next;
-      _allocator.destroy(current);
+      std::allocator_traits<NodeAllocator>::destroy(_allocator, current);
       _allocator.deallocate(current, 1);
       current = next;
     }
@@ -218,6 +211,20 @@ public:
 
 int main()
 {
+  {
+    TCustomAllocator<int> alloc(10);
+    std::vector<int, TCustomAllocator<int>> v(alloc);
+    for (int i = 0; i < 10; ++i)
+    {
+      v.push_back(i);
+    }
+    for (const auto& i : v)
+    {
+      std::cout << i << '\n';
+    }
+    std::cout << std::endl;
+  }
+
   {
     std::map<int, int> m;
 
