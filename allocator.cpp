@@ -7,162 +7,266 @@
 
 template <class T>
 struct TCustomAllocator {
-    using value_type = T;
 
-    using PoolBlock = std::shared_ptr<void>;
+  typedef T value_type;
+  typedef T* pointer;
+  typedef const T* const_pointer;
+  typedef T& reference;
+  typedef const T& const_reference;
 
-    const std::size_t blockSize = 0;
-    std::stack<PoolBlock> blocks;
-    std::stack<void*> addresses;
+  using PoolBlock = std::shared_ptr<void>;
 
-    void AddMoreAddresses()
+  const std::size_t blockSize = 0;
+  std::stack<PoolBlock> blocks;
+  std::stack<void*> addresses;
+
+  void AddMoreAddresses()
+  {
+    PoolBlock block(::operator new(blockSize * sizeof(T)));
+    blocks.push(block);
+
+    for (std::size_t i = 0; i < blockSize; ++i)
     {
-        PoolBlock block(::operator new(blockSize * sizeof(T)));
-        blocks.push(block);
+      addresses.push(static_cast<T*>(block.get()) + i);
+    }
+  }
 
-        for (size_t i = 0; i < blockSize; ++i)
-        {
-            addresses.push(static_cast<T*>(block.get()) + i);
-        }
+  TCustomAllocator(std::size_t inBlockSize)
+    : blockSize(inBlockSize)
+  {
+    if (inBlockSize == 0)
+    {
+      throw std::bad_alloc();
+    }
+  }
+
+  template <class U>
+  TCustomAllocator(const TCustomAllocator <U>& a)
+    : blockSize(a.blockSize)
+  {
+  }
+
+  T* allocate(std::size_t n)
+  {
+    if (n != 1)
+    {
+      throw std::bad_alloc();
     }
 
-    TCustomAllocator(std::size_t inBlockSize)
-        : blockSize(inBlockSize)
+    if (addresses.empty())
     {
-        if (inBlockSize == 0)
-        {
-            throw std::bad_alloc();
-        }
+      AddMoreAddresses();
     }
 
-    template <class U>
-    TCustomAllocator(const TCustomAllocator <U>& a)
-        : blockSize(a.blockSize)
+    auto addr = static_cast<T*>(addresses.top());
+    addresses.pop();
+
+    return addr;
+  }
+
+  void deallocate(T* p, std::size_t n)
+  {
+    if (!p)
     {
+      return;
     }
 
-    T* allocate(std::size_t n)
+    if (n != 1)
     {
-        if (n != 1)
-        {
-            throw std::bad_alloc();
-        }
-
-        if (addresses.empty())
-        {
-            AddMoreAddresses();
-        }
-
-        auto addr = static_cast<T*>(addresses.top());
-        addresses.pop();
-
-        return addr;
+      throw std::bad_alloc();
     }
 
-    void deallocate(T* p, std::size_t n)
-    {
-        if (n != 1)
-        {
-            throw std::bad_alloc();
-        }
+    addresses.push(p);
+  }
 
-        addresses.push(p);
-    }
+  template <class Up, class... Args>
+  void construct(Up* p, Args&&... args) {
+    ::new ((void*)p) Up(std::forward<Args>(args)...);
+  }
+
+  void destroy(pointer p) {
+    p->~T();
+  }
+
+  template <class U>
+  struct rebind
+  {
+    typedef TCustomAllocator<U> other;
+  };
 };
 
 template <class T, class U>
 constexpr bool operator== (const TCustomAllocator<T>& a1, const TCustomAllocator<U>& a2) noexcept
 {
-    return true;
+  return true;
 }
 
 template <class T, class U>
 constexpr bool operator!= (const TCustomAllocator<T>& a1, const TCustomAllocator<U>& a2) noexcept
 {
-    return false;
+  return false;
 }
 
 template <class T, class Allocator = std::allocator<T>>
-struct TContainer
+class TContainer
 {
+private:
 
-    TContainer()
+  struct Node
+  {
+    Node* next;
+    T val;
+
+    explicit Node(const T& x)
+      : next(nullptr)
+      , val(x)
+    {}
+  };
+
+  Node* _head = nullptr;
+  Node* _last = nullptr;
+  typename Allocator::template rebind<Node>::other _allocator;
+
+public:
+
+  class Iterator
+  {
+  private:
+    Node* _current;
+
+  public:
+    explicit Iterator(Node* node)
+      : _current(node)
+    {}
+
+    T& operator* () const
     {
-
+      return _current->val;
     }
 
-    TContainer(const Allocator& allocator)
+    Iterator& operator++()
     {
-
+      _current = _current->next;
+      return *this;
     }
 
-    void push(const T& x)
+    bool operator!=(const Iterator& other) const
     {
-
+      return _current != other._current;
     }
+  };
 
-    T* begin() const
+  TContainer()
+    : _head(nullptr)
+    , _last(nullptr)
+  {}
+
+  TContainer(const Allocator& allocator)
+    : _head(nullptr)
+    , _last(nullptr)
+    , _allocator(allocator)
+  {}
+
+  ~TContainer()
+  {
+    clear();
+  }
+
+  void push(const T& x)
+  {
+    Node* node = _allocator.allocate(1);
+    _allocator.construct(node, x);
+
+    if (_head == nullptr)
     {
+      _head = node;
+      _last = node;
+    }
+    else
+    {
+      _last->next = node;
+      _last = node;
+    }
+  }
 
+  void clear()
+  {
+    auto current = _head;
+
+    while (current)
+    {
+      auto next = current->next;
+      _allocator.destroy(current);
+      _allocator.deallocate(current, 1);
+      current = next;
     }
 
-    null_sentinal_t end() const 
-    { 
-        return {}; 
-    }
+    _head = nullptr;
+    _last = nullptr;
+  }
+
+  Iterator begin() const
+  {
+    return Iterator(_head);
+  }
+
+  Iterator end() const
+  {
+    return Iterator(nullptr);
+  }
 };
 
 int main()
 {
-    {
-        std::map<int, int> m;
+  {
+    std::map<int, int> m;
 
-        for (int i = 0, f = 1; i < 10; ++i, f *= i)
-        {
-            m[i] = f;
-        }
+    for (int i = 0, f = 1; i < 10; ++i, f *= i)
+    {
+      m[i] = f;
+    }
+  }
+
+  {
+    TCustomAllocator<std::pair<const int, int>> alloc(10);
+    std::map<int, int, std::less<int>, TCustomAllocator<std::pair<const int, int>>> m(alloc);
+
+    for (int i = 0, f = 1; i < 10; ++i, f *= i)
+    {
+      m[i] = f;
     }
 
+    for (const auto& [k, v] : m)
     {
-        TCustomAllocator<std::pair<const int, int>> alloc(10);
-        std::map<int, int, std::less<int>, TCustomAllocator<std::pair<const int, int>>> m(alloc);
+      std::cout << k << ' ' << v << '\n';
+    }
+    std::cout << std::endl;
+  }
 
-        for (int i = 0, f = 1; i < 10; ++i, f *= i)
-        {
-            m[i] = f;
-        }
+  {
+    TContainer<int> c;
 
-        for (const auto& [k, v] : m)
-        {
-            std::cout << k << ' ' << v << '\n';
-        }
-        std::cout << std::endl;
+    for (int i = 0; i < 10; ++i)
+    {
+      c.push(i);
+    }
+  }
+
+  {
+    TCustomAllocator<int> alloc(10);
+    TContainer<int, TCustomAllocator<int>> c(alloc);
+
+    for (int i = 0; i < 10; ++i)
+    {
+      c.push(i);
     }
 
+    for (const auto& i : c)
     {
-        TContainer<int> c;
-
-        for (int i = 0; i < 10; ++i)
-        {
-            c.push(i);
-        }
+      std::cout << i << '\n';
     }
+    std::cout << std::endl;
+  }
 
-    {
-        TCustomAllocator<int> alloc(10);
-        TContainer<int, TCustomAllocator<int>> c(alloc);
-
-        for (int i = 0; i < 10; ++i)
-        {
-            c.push(i);
-        }
-
-        for (const auto& i : c)
-        {
-            std::cout << i << '\n';
-        }
-        std::cout << std::endl;
-    }
-
-    return 0;
+  return 0;
 }
