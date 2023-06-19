@@ -5,6 +5,13 @@
 #include <map>
 #include <stack>
 
+struct CustomPool
+{
+  using PoolBlock = std::shared_ptr<void>;
+  std::stack<PoolBlock> blocks;
+  std::stack<void*> addresses;
+};
+
 template <class T>
 struct TCustomAllocator {
 
@@ -43,6 +50,8 @@ struct TCustomAllocator {
   template <class U>
   TCustomAllocator(const TCustomAllocator <U>& a)
     : blockSize(a.blockSize)
+    , blocks(a.blocks)
+    , addresses(a.addresses)
   {
   }
 
@@ -212,29 +221,6 @@ public:
 int main()
 {
   {
-    TCustomAllocator<int> alloc(10);
-    std::vector<int, TCustomAllocator<int>> v(alloc);
-    for (int i = 0; i < 10; ++i)
-    {
-      v.push_back(i);
-    }
-    for (const auto& i : v)
-    {
-      std::cout << i << '\n';
-    }
-    std::cout << std::endl;
-  }
-
-  {
-    std::map<int, int> m;
-
-    for (int i = 0, f = 1; i < 10; ++i, f *= i)
-    {
-      m[i] = f;
-    }
-  }
-
-  {
     TCustomAllocator<std::pair<const int, int>> alloc(10);
     std::map<int, int, std::less<int>, TCustomAllocator<std::pair<const int, int>>> m(alloc);
 
@@ -248,6 +234,15 @@ int main()
       std::cout << k << ' ' << v << '\n';
     }
     std::cout << std::endl;
+  }
+
+  {
+    std::map<int, int> m;
+
+    for (int i = 0, f = 1; i < 10; ++i, f *= i)
+    {
+      m[i] = f;
+    }
   }
 
   {
