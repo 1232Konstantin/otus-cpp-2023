@@ -5,13 +5,6 @@
 #include <map>
 #include <stack>
 
-struct CustomPool
-{
-  using PoolBlock = std::shared_ptr<void>;
-  std::stack<PoolBlock> blocks;
-  std::stack<void*> addresses;
-};
-
 template <class T>
 struct TCustomAllocator {
 
@@ -24,21 +17,21 @@ struct TCustomAllocator {
   using PoolBlock = std::shared_ptr<void>;
 
   const std::size_t blockSize = 0;
-  std::stack<PoolBlock> blocks;
+  std::stack<void*> blocks; // todo: use PoolBlock instead to avoid memory leak
   std::stack<void*> addresses;
 
   void AddMoreAddresses()
   {
-    PoolBlock block(::operator new(blockSize * sizeof(T)));
+    void* block = (::operator new(blockSize * sizeof(T)));
     blocks.push(block);
 
     for (std::size_t i = 0; i < blockSize; ++i)
     {
-      addresses.push(static_cast<T*>(block.get()) + i);
+      addresses.push(static_cast<T*>(block) + i);
     }
   }
 
-  TCustomAllocator(std::size_t inBlockSize)
+  explicit TCustomAllocator(std::size_t inBlockSize)
     : blockSize(inBlockSize)
   {
     if (inBlockSize == 0)
@@ -52,8 +45,7 @@ struct TCustomAllocator {
     : blockSize(a.blockSize)
     , blocks(a.blocks)
     , addresses(a.addresses)
-  {
-  }
+  {}
 
   T* allocate(std::size_t n)
   {
@@ -221,6 +213,15 @@ public:
 int main()
 {
   {
+    std::map<int, int> m;
+
+    for (int i = 0, f = 1; i < 10; ++i, f *= i)
+    {
+      m[i] = f;
+    }
+  }
+
+  {
     TCustomAllocator<std::pair<const int, int>> alloc(10);
     std::map<int, int, std::less<int>, TCustomAllocator<std::pair<const int, int>>> m(alloc);
 
@@ -234,16 +235,7 @@ int main()
       std::cout << k << ' ' << v << '\n';
     }
     std::cout << std::endl;
-  }
-
-  {
-    std::map<int, int> m;
-
-    for (int i = 0, f = 1; i < 10; ++i, f *= i)
-    {
-      m[i] = f;
-    }
-  }
+  } // todo: it crashes here if shared_ptr is used because std::map uses proxy which tries to free memory by ifself
 
   {
     TContainer<int> c;
