@@ -4,11 +4,6 @@
 
 namespace Timus
 {
-  void task1001(std::istream& in, std::ostream& out)
-  {}
-
-  void task1293(std::istream& in, std::ostream& out)
-  {}
 
   void task1000(std::istream& in, std::ostream& out)
   {}
