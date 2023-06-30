@@ -1,921 +1,647 @@
-Monday.
-Tuesday.
-Wednesday.
-Thursday.
-Friday.
-Saturday.
-Sunday.
-weekdays.
-weekend. 
-January.
-February.
-March.
-April.
-May.
-June.
-July.
-August.
-September.
-October.
-November.
-December.
-cash.
-debit.
-credit card.
-cheque.
-in advance.
-annual fee.
-monthly membership.
-interest rate.
-deposit.
-tuition fees.
-poverty.
-bank statement.
-money management.
-current account.
-student account.
-withdraw.
-low-risk investment.
-mortgage.
-grace period.
-budget deficit.
-retail voucher.
-coupon. 
-counterfeit money.
-public money.
-taxpayers' money.
-debt.
-interest-free credit.
-purchase.
-partial refund.
-annuity.
-non-refundable.
-MasterCard.
+BENGALI.
+SUNDAY.
+ENTERTAINMENT INDUSTRY.
+CHOCOLATE.
+MONDAY.
+MARCH.
+TUESDAY.
+ENVIRONMENTALLY FRIENDLY.
+CENTURY.
+WAX.
+WITHDRAW.
+THURSDAY.
+APARTMENT BUILDING.
+APRIL.
+BARBELL.
+WEDNESDAY.
+CASH.
+FORTNIGHT.
+WEEKDAYS.
+FRIDAY.
+SATURDAY.
+CREDIT CARD.
+WEEKEND.
+BASEBALL.
+SCIENCE.
+EMBROIDERY.
+JANUARY.
+CITY CENTRE.
+HINDI.
+FILIPINO.
+FEBRUARY.
+SWIMMING POOL.
+MAY.
+JUNE.
+JULY.
+SPELUNKING.
+TERRACED HOUSE.
+PURPLE.
+STUDENT ACCOUNT.
+BIOLOGY.
+PERFORMING ARTS.
+TEMPLE.
+FABRIC.
+DEBT.
+LOW-RISK INVESTMENT.
+TRIANGULAR.
+AUGUST.
+GREEN PEPPER.
+OCTOBER.
+CANOEING.
+NOVEMBER.
+CHEQUE.
+OCEAN CURRENTS.
+PUBLIC MONEY.
+AUSTRALIA AND ANTARCTICA.
+TUITION FEES.
+ANNUAL FEE.
+BANK STATEMENT.
+MONTHLY MEMBERSHIP.
+INTEREST RATE.
+INTEREST-FREE CREDIT.
+STUDENT SUPPORT SERVICES.
+DEPOSIT.
+GLASSHOUSE.
+BUDGET DEFICIT.
+TAI-CHI.
+CATTLE.
+MASS.
+DISCUSS.
+CURRENT ACCOUNT.
+DUTY-FREE STORE.
+GRACE PERIOD.
 VISA.
-distribution costs.
-income.
-finance department.
-family finances.
-duty-free store.
-science.
-politics.
-history.
-biology.
-architecture.
-law.
-geography.
-archaeology.
-literature.
-business management.
-agriculture.
-statistics.
-mathematics.
-logic.
-physics.
-psychology.
-anthropology.
-economics.
-philosophy.
-performing arts.
-visual arts.
-chemistry.
-humanities. 
-course outline.
-group discussion.
-handout.
-written work.
-report writing.
-research.
-Proofreading.
-experiment.
-experience.
-reference.
-textbook.
-dictionary.
-laptop.
-printer.
-student advisor.
-teamwork.
-module.
-topic.
-assessment.
-library.
-department.
-computer centre.
-classroom.
-lecture.
-tutor.
-main hall.
-attendance.
-deadline.
-give a talk.
-speech.
-computer laboratory.
-certificate.
-diploma.
-placement test.
-overseas students.
-full-time.
-facilities.
-college.
-dining room.
-specialist.
-knowledge.
-international.
-accommodation.
-home stay.
-primary.
-secondary.
-intermediate.
-media room.
-resources room.
-staff.
-commencement.
-dissertation.
-leaflet.
-faculty.
-pupils.
-pencil.
-feedback.
-tasks.
-outcomes.
-advanced.
-introductory.
-extra background.
-higher education.
-guidelines.
-post-secondary.
-supervisor.
-bachelor's degree.
-compound.
-vocabulary.
-student support services.
-student retention.
-publication.
-foreign students.
-schedule.
-school reunion.
-registrar's office.
-stationery.
-catalogue.
-interview.
-newsletter.
-competition.
-TV program.
-strategies.
-research method.
-entertainment industry.
-leadership.
-management.
-display.
-products.
-customer.
-special offer.
-collecting data.
-questionnaire.
-survey.
-mass media.
-statistic.
-profit margin.
-poll.
-business card.
-training.
-trainee.
-merchandise.
-manufacture.
-recruitment.
-Health: yoga.
-tai-chi.
-keep-fit.
-salad bar.
-vegetarian.
-outdoor activities.
-leisure time.
-disease.
-meal.
-protein.
-balanced diet.
-food pyramid.
-vitamin.
-carbohydrates.
-rice.
-pasta.
-potatoes.
-pizza.
-tomatoes.
-bread.
-cereals.
-minerals.
-zinc.
-meat.
-seafood.
-eggs.
-beans.
-milk.
-cheese.
-yoghurt.
-fruit.
-vegetables.
-citrus fruits.
-green pepper.
-blackcurrant.
-nuts.
-egg yolk.
-liver.
-medicine، treatment.
-remedy.
-nursing care.
-nursery.
-regular exercise.
-field.
-footbridge.
-environment.
-waterfall.
-river.
-mountain.
-forest.
-village.
-coast.
-reef.
-lake.
-valley.
-hill.
-cliff.
-island.
-peninsula.
-earthquake.
-avalanche.
-tornado.
-typhoon.
-desertification.
-volcano.
-disaster.
-catastrophe.
-erosion.
-landslides.
-storm.
-flood.
-hurricane.
-pond.
-jungle.
-oasis.
-dam.
-greenhouse effect.
-acid rain.
-global warming.
-carbon dioxide.
-burring fossil.
-exhaust fumes.
-deforestation.
-nitrogen oxide.
-smog.
-climate.
-pollution.
-temperature.
-power plants.
-landfill.
-cattle.
-wind turbine.
-soar power.
-hydroelectric power.
-renewable.
-source of energy.
-reliable.
-solar panels.
-environmentally friendly.
-oxygen.
-chemical-free.
-desert.
-degradation.
-vegetation.
-sea level.
-ocean currents.
-soil conditioner.
-coal.
-fossil fuels.
-firewood.
-drought.
-contaminated.
-birds of prey.
-seabirds.
-poultry and game.
-mammals.
-cetacean.
-whale.
-primates.
-rodents.
-fish.
-amphibian.
-reptile.
-insects.
-octopus.
-phylum.
-class.
-order.
-family.
-genus.
-species.
-livestock.
-creature.
-lion.
-penguin.
-mushroom.
-fungus.
-leaves.
-seed.
-core.
-bark.
-trunk.
-twig.
-branch.
-flower.
-stem.
-roots.
-cluster.
-South America.
-North America.
-Africa.
-Asia.
-Europe.
-Australia and Antarctica.
-Egypt.
-Mexico.
-France.
-Indonesia.
-Turkey.
-England.
-Germany.
-China.
-Greece.
-Brazil.
-India.
-North Korea.
-India.
-Malaysia.
-New Zealand.
-Nigeria.
-Pakistan.
-Singapore.
-Switzerland .
-United Kingdom.
-Italy.
-the dominican republic.
-the philippines.
-Denmark.
-linguistics.
-bilingual.
-trilingual.
-polyglot.
-Portuguese.
-Mandarin.
-Bengali.
-Chinese.
-Hindi.
-Russian.
-Japanese.
-German.
-Punjabi.
-Thai.
-Persian.
-Filipino.
-French.
-Italian.
-Greek.
-French.
-dome.
-palace.
-fort.
-castle.
-glasshouse.
-pyramid.
-log cabin.
-lighthouse.
-hut.
-skyscraper.
-sculpture.
-semi-detached house.
-duplex.
-terraced house.
-town house.
-row house.
-bungalow.
-thatched cottage.
-mobile home.
-houseboat.
-block of flats.
-apartment building.
-condominium.
-chimney.
-bedroom.
-basement.
-landlord.
-tenant.
-rent.
-lease.
-neighborhood.
-suburb.
-sofa.
-coffee table.
-dormitory.
-storey.
-kitchen.
-refrigerator.
-microwave.
-ground floor.
-oven.
-hallway.
-insurance In the city: cities.
-street.
-lane.
-city centre.
-central station.
-car park.
-department store.
-bridge.
-temple.
-embassy.
-road system.
-hospital.
-garden.
-avenue.
-clinic.
-dentist.
-reception.
-appointment.
-staff selection.
-colleague.
-workshop.
-showroom.
-information desk.
-employer.
-employment.
-unemployed.
-technical cooperation.
-team leaders.
-stress.
-ability.
-vision.
-confidence.
-employee.
-internship.
-reasonable.
-satisfactory.
-dangerous.
-safe.
-strongly recommended.
-poor quality.
-satisfied.
-disappointed.
-efficient.
-luxurious.
-colored.
-spotted.
-striped.
-expensive.
-cheap.
-tourist. 
-guided tour.
-ticket office.
-souvenir.
-trip.
-guest.
-reservation.
-view.
-culture.
-memorable.
-single double bedded room.
-picnic.
-tourist attraction.
-hostel.
-suite.
-aquarium.
-train.
-develop.
-collect.
-supervise.
-mark.
-edit.
-revise.
-exhibit.
-donate.
-surpass.
-register.
-support.
-hunt.
-persuade.
-concentrate.
-discuss.
-suggest.
-arrange.
-borrow.
-immigrate.
-review.
-learn.
-touch.
-energetic.
-social.
-ancient.
-necessary.
-fantastic.
-exciting.
-fabulous.
-dull.
-comfortable.
-convenient.
-suitable.
-affordable.
-voluntary. 
-mandatory.
-compulsory.
-temporary.
-permanent.
-Immense.
-vast.
-salty.
-extinct.
-vulnerable.
-pessimistic.
-optimistic.
-realistic.
-practical.
-knowledgeable.
-flexible.
-confident.
-Western.
-intensive.
-tranquil.
-spectacular.
-intact.
-orienteering.
-caving.
-spelunking.
-archery.
-ice skating.
-scuba-diving.
-snorkeling.
-skateboarding.
-bowls.
-darts.
-golf.
-billiards.
-photography.
-painting.
-pottery.
-woodcarving.
-gardening.
-stamp collection.
-embroidery.
-climbing.
-chess.
-cricket.
-baseball.
-basketball.
-rugby.
-soccer.
-american football.
-hockey.
-swimming.
-tennis.
-squash.
-badminton.
-ping-pong.
-field.
-court.
-pitch.
-stadium.
-team.
-the discus.
-the javelin.
-the hammer.
-the high jump.
-horse racing.
-show jumping.
-polo.
-cycling.
-gymnasium.
-athlete.
-gym.
-extreme sports.
-paragliding.
-hang-gliding.
-skydiving.
-abseiling.
-snowboarding.
-bungee jumping.
-surfing.
-windsurfing.
-jet-skiing.
-bodyboarding.
-white-water rafting.
-kitesurfing.
-mountain biking.
-jogging.
-press-up.
-push-up.
-barbell.
-treadmill.
-judo.
-recreation.
-snooker.
-walking.
-championship.
-canoeing.
-refreshment.
-Square.
-rectangular.
-triangular.
-polygon.
-Oval.
-spherical.
-spiral.
-circular.
-curved.
-cylindrical.
-Measurement width.
-length.
-altitude.
-imperial system.
-metric system.
-Mass.
-depth.
-breadth.
-height.
-three dimensions.
-frequency.
-cargo plane.
-shipment.
-container ship.
-boat.
-lifeboat.
-ferry.
-hovercraft.
-hydrofoil.
-liner.
-canal boat.
-narrowboat.
-dinghy sailing.
-sailboat.
-paddle steamer.
-cabin cruiser.
-rowing boat.
-rowboat.
-kayak.
-canoe.
-punt.
-gondola.
-aircraft.
-helicopter.
-seaplane.
-airship.
-hot-air balloon.
-airport.
-crew.
-passenger.
-platform.
-hire a car.
-automobile.
-double-decker bus.
-single-decker.
-minibus.
-school bus.
-coach.
-truck.
-tanker.
-van.
-lorry.
-transporter.
-forklift truck.
-tow truck.
-breakdown truck.
-pickup.
-jeep.
-caravan.
-camper.
-tractor.
-taxi.
-cab.
-tram.
-underground.
-subway.
-stream train.
-freight train.
-goods train.
-Weather.
-humid.
-hot.
-sticky.
-breeze.
-chilly.
-cold.
-cool.
-dry.
-dusty.
-freezing.
-hot.
-warm.
-wet.
-weather forecast.
-antenna.
-moisture.
-local library.
-swimming pool.
-cafeteria.
-cottage.
-parliament.
-accommodation.
-restaurant.
-canteen.
-cafe.
-bookshop.
-sports centre.
-city council.
-dance studio.
-park.
-conversation club.
-kindergarten.
-helmet.
-light.
-musical instrument.
-cassette.
-silicon chip.
-digital monitor.
-gadget.
-device.
-screen.
-breaks.
-wheels .
-mechanical pencil.
-disk.
-backpack.
-Opera.
-Orchestra .
-concert .
-symphony.
-the press.
-conductor.
-vocalist.
-audience.
-festival.
-carnival.
-exhibition.
-classical music.
-theatre.
-cinemas.
-art gallery.
-museum.
-ballet.
-television.
-radio.
-graphics.
-newspaper. 
-fur.
-metal.
-steel.
-aluminum.
-copper.
-rubber.
-plastic.
-ceramics.
-glass.
-cement.
-stone.
-textile.
-cotton.
-fabric.
-wool.
-leather.
-bone.
-paper.
-lumber/wood.
-glue.
-composite.
-fiberglass.
-concrete.
-wax.
-paper.
-wood.
-silver.
-gold.
-feather.
-occupation.
-profession.
-designer.
-decorator.
-architect.
-engineer.
-manager.
-waitress.
-waiter.
-teacher.
-vacancy.
-professor.
-specialist.
-psychologist. 
-volunteer.
-freelance.
-secretary.
-craftsman .
-work experience.
-curriculum vitae.
-mail address.
-receptionist.
-pilot.
-guard.
-flight attendant.
-lecturer.
-office assistant.
-clerk.
-accountant.
-cashier.
-captain.
-blue.
-white.
-orange.
-green.
-grey.
-black.
-red.
-yellow.
-purple.
-brown.
-pink.
-three times.
-three times per week.
-a gap year.
-fulltime.
-part-time.
-midday.
-midnight.
-millennium.
-century.
-decade.
-fortnight.
-passport photo.
-state.
-government.
-individual.
-variety.
-private sector.
-practice.
-gender.
-creativity.
-original inhabitant.
-indigenous.
-demonstration.
-strike.
-entrance.
-circuit.
-guarantee.
-dialogue .
-commerce.
-carriage.
-narrative.
-chocolate.
-satellite.
-decision.
-prototype.
-attitude.
-daily routine.
-personal fulfillment.
-activity.
-recipient.
-ultrasound.
-pedestrian safety.
-traffic jams.
-procedures.
-creation.
-prize.
-junior.
-senior.
-opportunity.
-driving license.
-process.
-literary.
-man-made.
-republicans.
-umbrella.
-frequently updated.
-waiting list.
-sewer systems.
-liberal democracy.
-democrats.
-lunar calendar.
-libertarian.
-burger.
-videos.
-nature conservation.
-life expectancy.
-fund-raising event.
-magnet.
-dialect.
-ramification.
-straight.
-farewell.
-welfare.
-encyclopedia.
-evolution.
-revolution.
-illiteracy.
-robot.
-proficiency.
-sufcient.
+NORTH AMERICA.
+REEF.
+COUPON.
+CARRIAGE.
+COUNTERFEIT MONEY.
+COMPUTER CENTRE.
+TAXPAYERS' MONEY.
+PURCHASE.
+FAMILY FINANCES.
+PARTIAL REFUND.
+ANNUITY.
+CATASTROPHE.
+CANTEEN.
+SINGAPORE.
+PAINTING.
+MASTERCARD.
+ROWING BOAT.
+VULNERABLE.
+DISTRIBUTION COSTS.
+PING-PONG.
+POLITICS.
+SEWER SYSTEMS.
+OVEN.
+LECTURER.
+RECRUITMENT.
+INDONESIA.
+ARCHAEOLOGY.
+CASHIER.
+HIRE A CAR.
+LITERATURE.
+MANUFACTURE.
+BILINGUAL.
+CONTAINER SHIP.
+AGRICULTURE.
+ENGLAND.
+JAPANESE.
+STATISTICS.
+MATHEMATICS.
+LOGIC.
+ATTENDANCE.
+RENEWABLE.
+WEATHER FORECAST.
+COLLEAGUE.
+PSYCHOLOGY.
+ANTHROPOLOGY.
+SECRETARY.
+CAFETERIA.
+ECONOMICS.
+SEA LEVEL.
+COAL.
+PHILOSOPHY.
+VISUAL ARTS.
+HUMANITIES.
+COURSE OUTLINE.
+THREE DIMENSIONS.
+GROUP DISCUSSION.
+JUNGLE.
+EXCITING.
+WRITTEN WORK.
+REPORT WRITING.
+BREAKDOWN TRUCK.
+BRAZIL.
+PROOFREADING.
+PLATFORM.
+EXPERIMENT.
+NEIGHBORHOOD.
+GONDOLA.
+EXPERIENCE.
+ENVIRONMENT.
+REFERENCE.
+LAPTOP.
+CLUSTER.
+BLACKCURRANT.
+ANCIENT.
+PRINTER.
+STAMP COLLECTION.
+SEMI-DETACHED HOUSE.
+PERSUADE.
+WOOL.
+AIRPORT.
+STUDENT ADVISOR.
+CETACEAN.
+PARK.
+ABSEILING.
+TEAMWORK.
+PUSH-UP.
+MODULE.
+VOLCANO.
+CREATION.
+VARIETY.
+LANE.
+PRIZE.
+ANTENNA.
+LIBRARY.
+DEPARTMENT.
+SALAD BAR.
+FUND-RAISING EVENT.
+CLASSROOM.
+COLLECT.
+LECTURE.
+SUITE.
+TUTOR.
+MASS MEDIA.
+DEADLINE.
+DISPLAY.
+AFRICA.
+STREAM TRAIN.
+GIVE A TALK.
+COMPUTER LABORATORY.
+RIVER.
+GADGET.
+DIPLOMA.
+BLACK.
+DESERTIFICATION.
+GARDENING.
+GREENHOUSE EFFECT.
+FULL-TIME.
+FACILITIES.
+COLLEGE.
+INTRODUCTORY.
+EMPLOYER.
+SPECIALIST.
+CURRICULUM VITAE.
+HYDROELECTRIC POWER.
+DEGRADATION.
+ACCOMMODATION.
+WAITER.
+HOME STAY.
+AVENUE.
+HOVERCRAFT.
+PRIMARY.
+SECONDARY.
+INDIVIDUAL.
+LANDSLIDES.
+MEDIA ROOM.
+RESOURCES ROOM.
+PADDLE STEAMER.
+SPECIAL OFFER.
+UNDERGROUND.
+COMMENCEMENT.
+DISSERTATION.
+TYPHOON.
+DISASTER.
+HOSTEL.
+VACANCY.
+TOURIST ATTRACTION.
+LIBERTARIAN.
+AVALANCHE.
+REALISTIC.
+FACULTY.
+NECESSARY.
+PUPILS.
+FEEDBACK.
+FOOD PYRAMID.
+TASKS.
+WAITING LIST.
+DEFORESTATION.
+HIGHER EDUCATION.
+GUIDELINES.
+POST-SECONDARY.
+SUPERVISOR.
+TRAFFIC JAMS.
+EMPLOYMENT.
+BACHELOR'S DEGREE.
+GLUE.
+SCHOOL REUNION.
+IMMENSE.
+VOCABULARY.
+STUDENT RETENTION.
+PUBLICATION.
+FOREIGN STUDENTS.
+CERAMICS.
+SCHEDULE.
+REGISTRAR'S OFFICE.
+REGULAR EXERCISE.
+STATIONERY.
+MUSICAL INSTRUMENT.
+CATALOGUE.
+CEREALS.
+COMPETITION.
+STRATEGIES.
+RESEARCH METHOD.
+LEADERSHIP.
+CONDUCTOR.
+MANAGEMENT.
+MEXICO.
+ACCOUNTANT.
+PRODUCTS.
+COLLECTING DATA.
+SUFCIENT.
+QUESTIONNAIRE.
+SURVEY.
+PERSONAL FULFILLMENT.
+PARAGLIDING.
+PROFIT MARGIN.
+DANGEROUS.
+BUSINESS CARD.
+MERCHANDISE.
+HEALTH: YOGA.
+KEEP-FIT.
+GUARANTEE.
+KINDERGARTEN.
+GENUS.
+STRIPED.
+OUTDOOR ACTIVITIES.
+RODENTS.
+TRANSPORTER.
+DISEASE.
+MEDICINE، TREATMENT.
+PROCESS.
+MEAL.
+PROTEIN.
+VITAMIN.
+PRIVATE SECTOR.
+CARBOHYDRATES.
+POTATOES.
+NARRATIVE.
+PERMANENT.
+PIZZA.
+CONCERT .
+TOMATOES.
+SINGLE-DECKER.
+MEAT.
+GENDER.
+HELMET.
+SEAFOOD.
+FIREWOOD.
+BEANS.
+EGYPT.
+NEWSPAPER.
+SPHERICAL.
+CHEESE.
+YOGHURT.
+FRUIT.
+CITRUS FRUITS.
+EMPLOYEE.
+EGG YOLK.
+LIVER.
+ROW HOUSE.
+RECEPTION.
+UNITED KINGDOM.
+TICKET OFFICE.
+NURSERY.
+FOOTBRIDGE.
+PUNJABI.
+THE DOMINICAN REPUBLIC.
+SINGLE DOUBLE BEDDED ROOM.
+MOUNTAIN.
+MECHANICAL PENCIL.
+LANDFILL.
+INFORMATION DESK.
+CLIFF.
+ISLAND.
+PENINSULA.
+TORNADO.
+FREELANCE.
+EROSION.
+POND.
+OASIS.
+DAM.
+CARBON DIOXIDE.
+BURRING FOSSIL.
+ITALY.
+BADMINTON.
+MANDARIN.
+EXHAUST FUMES.
+NITROGEN OXIDE.
+SMOG.
+LIGHTHOUSE.
+LENGTH.
+POWER PLANTS.
+PRIMATES.
+HOUSEBOAT.
+SOAR POWER.
+SOURCE OF ENERGY.
+RELIABLE.
+OPPORTUNITY.
+CHEMICAL-FREE.
+VEGETATION.
+EXHIBITION.
+DROUGHT.
+SUBURB.
+BIRDS OF PREY.
+SEABIRDS.
+POULTRY AND GAME.
+MAMMALS.
+FISH.
+ARCHITECT.
+EFFICIENT.
+AMPHIBIAN.
+GARDEN.
+INSECTS.
+FREIGHT TRAIN.
+PHYLUM.
+FIBERGLASS.
+CLASS.
+PENGUIN.
+LIVESTOCK.
+WARM.
+SKYSCRAPER.
+MUSHROOM.
+JOGGING.
+COMPULSORY.
+SEED.
+BREEZE.
+CORE.
+BARK.
+AIRSHIP.
+TWIG.
+STEM.
+CRAFTSMAN .
+MALAYSIA.
+IMMIGRATE.
+NEW ZEALAND.
+SPECTACULAR.
+PAKISTAN.
+SWITZERLAND .
+STRAIGHT.
+THE PHILIPPINES.
+DENMARK.
+LINGUISTICS.
+STOREY.
+WOOD.
+JET-SKIING.
+TRILINGUAL.
+LIFE EXPECTANCY.
+GREEN.
+PORTUGUESE.
+CAFE.
+CHINESE.
+MEASUREMENT WIDTH.
+CAVING.
+CARNIVAL.
+PERSIAN.
+LOG CABIN.
+HUT.
+SCULPTURE.
+TOWN HOUSE.
+BUNGALOW.
+MILLENNIUM.
+HYDROFOIL.
+THATCHED COTTAGE.
+COPPER.
+CHIMNEY.
+BEDROOM.
+TENANT.
+RENT.
+HALLWAY.
+SNORKELING.
+LEASE.
+SOFA.
+MUSEUM.
+CARGO PLANE.
+DORMITORY.
+BONE.
+KITCHEN.
+CONCENTRATE.
+REFRIGERATOR.
+FAREWELL.
+INSURANCE IN THE CITY: CITIES.
+STREET.
+CENTRAL STATION.
+EMBASSY.
+FORKLIFT TRUCK.
+UMBRELLA.
+CLINIC.
+SATISFACTORY.
+STAFF SELECTION.
+DEMONSTRATION.
+WORKSHOP.
+TECHNICAL COOPERATION.
+RECEPTIONIST.
+TEAM LEADERS.
+STRESS.
+PROFESSION.
+INTERNSHIP.
+LUXURIOUS.
+POOR QUALITY.
+SATISFIED.
+DISAPPOINTED.
+PAPER.
+COLORED.
+SPOTTED.
+CHEAP.
+TOURIST.
+SOUVENIR.
+PICNIC.
+AQUARIUM.
+SKATEBOARDING.
+SUPERVISE.
+EXHIBIT.
+SURPASS.
+WAITRESS.
+WHEELS .
+ARRANGE.
+FANTASTIC.
+THEATRE.
+FABULOUS.
+PEDESTRIAN SAFETY.
+COTTON.
+COMFORTABLE.
+CONVENIENT.
+SUITABLE.
+AFFORDABLE.
+RECTANGULAR.
+VOLUNTARY.
+OPTIMISTIC.
+KAYAK.
+LUNAR CALENDAR.
+PASSPORT PHOTO.
+KNOWLEDGEABLE.
+WESTERN.
+INTENSIVE.
+TRANQUIL.
+OCCUPATION.
+INTACT.
+ORIENTEERING.
+SCUBA-DIVING.
+DAILY ROUTINE.
+BOWLS.
+THREE TIMES.
+RECREATION.
+GOLF.
+SPORTS CENTRE.
+BILLIARDS.
+PHOTOGRAPHY.
+MAIL ADDRESS.
+WOODCARVING.
+SQUASH.
+SOCCER.
+AMERICAN FOOTBALL.
+HOCKEY.
+SWIMMING.
+TEAM.
+THE DISCUS.
+THE PRESS.
+THE JAVELIN.
+THE HIGH JUMP.
+SHOW JUMPING.
+VOLUNTEER.
+POLO.
+GYMNASIUM.
+ATHLETE.
+GYM.
+EXTREME SPORTS.
+HANG-GLIDING.
+BUNGEE JUMPING.
+BODYBOARDING.
+WHITE-WATER RAFTING.
+KITESURFING.
+MOUNTAIN BIKING.
+PRESS-UP.
+TREADMILL.
+SNOOKER.
+WORK EXPERIENCE.
+CHAMPIONSHIP.
+RECIPIENT.
+REFRESHMENT.
+SQUARE.
+SPIRAL.
+CIRCULAR.
+CYLINDRICAL.
+IMPERIAL SYSTEM.
+BREADTH.
+COMMERCE.
+HEIGHT.
+FREQUENCY.
+FREQUENTLY UPDATED.
+SHIPMENT.
+BOAT.
+STRIKE.
+BROWN.
+COTTAGE.
+NARROWBOAT.
+A GAP YEAR.
+COACH.
+DINGHY SAILING.
+SAILBOAT.
+YELLOW.
+ROWBOAT.
+CANOE.
+PUNT.
+HELICOPTER.
+HOT-AIR BALLOON.
+JUNIOR.
+CREW.
+AUTOMOBILE.
+ATTITUDE.
+DOUBLE-DECKER BUS.
+TOW TRUCK.
+CARAVAN.
+ENGINEER.
+TRACTOR.
+GOODS TRAIN.
+WEATHER.
+STICKY.
+BALLET.
+PARLIAMENT.
+RESTAURANT.
+BOOKSHOP.
+CITY COUNCIL.
+CONVERSATION CLUB.
+PROTOTYPE.
+CASSETTE.
+SILICON CHIP.
+DEVICE.
+ORCHESTRA .
+ART GALLERY.
+ALUMINUM.
+PSYCHOLOGIST.
+LEATHER.
+LUMBER/WOOD.
+COMPOSITE.
+CONCRETE.
+SILVER.
+GOLD.
+FEATHER.
+DESIGNER.
+DECORATOR.
+MANAGER.
+TEACHER.
+PROFESSOR.
+OFFICE ASSISTANT.
+PILOT.
+GUARD.
+FLIGHT ATTENDANT.
+CLERK.
+CAPTAIN.
+BLUE.
+WHITE.
+ORANGE.
+GREY.
+RED.
+PINK.
+THREE TIMES PER WEEK.
+FULLTIME.
+PART-TIME.
+MIDDAY.
+MIDNIGHT.
+DECADE.
+STATE.
+GOVERNMENT.
+PRACTICE.
+CREATIVITY.
+ORIGINAL INHABITANT.
+INDIGENOUS.
+ENTRANCE.
+CIRCUIT.
+DIALOGUE .
+SATELLITE.
+WELFARE.
+DECISION.
+ACTIVITY.
+ULTRASOUND.
+PROCEDURES.
+SENIOR.
+DRIVING LICENSE.
+LITERARY.
+MAN-MADE.
+REPUBLICANS.
+LIBERAL DEMOCRACY.
+DEMOCRATS.
+BURGER.
+VIDEOS.
+NATURE CONSERVATION.
+MAGNET.
+DIALECT.
+RAMIFICATION.
+ENCYCLOPEDIA.
+EVOLUTION.
+REVOLUTION.
+ILLITERACY.
+ROBOT.
+PROFICIENCY.
