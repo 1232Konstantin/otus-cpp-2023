@@ -17,17 +17,17 @@ struct TCustomAllocator {
   using PoolBlock = std::shared_ptr<void>;
 
   const std::size_t blockSize = 0;
-  std::stack<void*> blocks; // todo: use PoolBlock instead to avoid memory leak
+  std::stack<PoolBlock> blocks;
   std::stack<void*> addresses;
 
   void AddMoreAddresses()
   {
-    void* block = (::operator new(blockSize * sizeof(T)));
+    PoolBlock block(::operator new(blockSize * sizeof(T)));
     blocks.push(block);
 
     for (std::size_t i = 0; i < blockSize; ++i)
     {
-      addresses.push(static_cast<T*>(block) + i);
+      addresses.push(static_cast<T*>(block.get()) + i);
     }
   }
 
@@ -161,6 +161,15 @@ public:
     , _allocator(allocator)
   {}
 
+  TContainer(const TContainer& other)
+    : _allocator(other._allocator)
+  {
+    for (const auto& i : other)
+    {
+      push(i);
+    }
+  }
+
   ~TContainer()
   {
     clear();
@@ -222,20 +231,10 @@ int main()
   }
 
   {
-    TCustomAllocator<std::pair<const int, int>> alloc(10);
-    std::map<int, int, std::less<int>, TCustomAllocator<std::pair<const int, int>>> m(alloc);
-
-    for (int i = 0, f = 1; i < 10; ++i, f *= i)
-    {
-      m[i] = f;
-    }
-
-    for (const auto& [k, v] : m)
-    {
-      std::cout << k << ' ' << v << '\n';
-    }
-    std::cout << std::endl;
-  } // todo: it crashes here if shared_ptr is used because std::map uses proxy which tries to free memory by ifself
+    TContainer<int> a;
+    a.push(42);
+    auto b = a;
+  }
 
   {
     TContainer<int> c;
@@ -261,6 +260,22 @@ int main()
     }
     std::cout << std::endl;
   }
+
+  {
+    TCustomAllocator<std::pair<const int, int>> alloc(10);
+    std::map<int, int, std::less<int>, TCustomAllocator<std::pair<const int, int>>> m(alloc);
+
+    for (int i = 0, f = 1; i < 10; ++i, f *= i)
+    {
+      m[i] = f;
+    }
+
+    for (const auto& [k, v] : m)
+    {
+      std::cout << k << ' ' << v << '\n';
+    }
+    std::cout << std::endl;
+  } // todo: it crashes here if shared_ptr is used because std::map uses proxy which tries to free memory by ifself
 
   return 0;
 }
