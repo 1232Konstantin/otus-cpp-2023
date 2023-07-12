@@ -14,7 +14,7 @@ struct TCustomAllocator {
   typedef T& reference;
   typedef const T& const_reference;
 
-  using PoolBlock = std::shared_ptr<void>;
+  using PoolBlock = std::shared_ptr<std::byte[]>;
 
   const std::size_t blockSize = 0;
   std::stack<PoolBlock> blocks;
@@ -22,12 +22,12 @@ struct TCustomAllocator {
 
   void AddMoreAddresses()
   {
-    PoolBlock block(::operator new(blockSize * sizeof(T)));
+    PoolBlock block(new std::byte[blockSize * sizeof(T)]);
     blocks.push(block);
 
     for (std::size_t i = 0; i < blockSize; ++i)
     {
-      addresses.push(static_cast<T*>(block.get()) + i);
+      addresses.push(reinterpret_cast<T*>(block.get()) + i);
     }
   }
 
