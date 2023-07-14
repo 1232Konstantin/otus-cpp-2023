@@ -57,7 +57,9 @@ jobs:
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DPATCH_VERSION=${{ github.run_number }}
 
     - run: ls
-    
+
+    - run: echo ${CMAKE_CURRENT_BINARY_DIR}
+
     # Build the HTML documentation
     - name: Doxygen Action
       uses: mattnotmitt/doxygen-action@v1.1.0
