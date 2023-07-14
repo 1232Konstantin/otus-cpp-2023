@@ -14,6 +14,8 @@ set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
 project ("Templates" VERSION ${PROJECT_VESRION})
 
+configure_file(Doxyfile.in Doxyfile)
+
 # Add source to this project's executable.
 add_executable (Templates "templates.cpp")
 
