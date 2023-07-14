@@ -1,18 +1,44 @@
+/**
+ * @file templates.cpp
+ * @author Dabudabot
+ */
+
 #include <string>
 #include <vector>
 #include <list>
 #include <iostream>
 #include <type_traits>
 
+/**
+ * Supporting structure to check if type is container (vector or list)
+ * Base structure which value is false by default
+ */
 template <class T>
 struct is_container : std::false_type {};
+/**
+ * Supporting structure to check if type is container (vector or list)
+ * Child structure specified for list which value is true
+ */
 template <class... Ts>
 struct is_container<std::list<Ts...>> : std::true_type {};
+/**
+ * Supporting structure to check if type is container (vector or list)
+ * Child structure specified for vector which value is true
+ */
 template <class... Ts>
 struct is_container<std::vector<Ts...>> : std::true_type {};
+/**
+ * Just shortcut to get value of is_container
+ */
 template <class T>
 inline constexpr bool is_container_v = is_container<T>::value;
 
+/**
+ * @brief handles printing ip provided as integral numbers to out stream
+ *
+ * @param ip address as number
+ * @param out output stream, default is std::cout
+ */
 template <class T>
 void print_ip(const T& ip,
   std::ostream& out = std::cout,
@@ -29,6 +55,12 @@ void print_ip(const T& ip,
   out << '\n';
 }
 
+/**
+ * @brief handles printing ip provided as string to out stream
+ *
+ * @param ip address as string
+ * @param out output stream, default is std::cout
+ */
 template <class T>
 void print_ip(const T& ip, 
   std::ostream& out = std::cout,
@@ -37,6 +69,12 @@ void print_ip(const T& ip,
   out << ip << '\n';
 }
 
+/**
+ * @brief handles printing ip provided as container (vector or list) to out stream
+ *
+ * @param ip address as container (vector or list)
+ * @param out output stream, default is std::cout
+ */
 template <class T>
 void print_ip(const T& ip,
   std::ostream& out = std::cout,
@@ -53,18 +91,39 @@ void print_ip(const T& ip,
   out << '\n';
 }
 
+/**
+ * Supporting structure to check if tuple homogeneous
+ * Base structure which value is true by default
+ */
 template <class... Args>
 struct is_homogeneous_tuple : std::true_type {};
+/**
+ * Supporting structure to check if tuple homogeneous
+ * Overload for the case when tuple has only one element
+ */
 template <class T>
 struct is_homogeneous_tuple<T> : std::true_type {};
+/**
+ * Supporting structure to check if tuple homogeneous
+ * Overload which slice tuple elements checks them and go recursive to check others
+ */
 template <class T, class U, class... Args>
 struct is_homogeneous_tuple<T, U, Args...>
 {
   static constexpr bool value = std::is_same_v<T, U> ? is_homogeneous_tuple<U, Args...>::value : false;
 };
+/**
+ * Just shortcut to get value of is_homogeneous_tuple
+ */
 template <class... Args>
 inline constexpr bool is_homogeneous_tuple_v = is_homogeneous_tuple<Args...>::value;
 
+/**
+ * @brief used to recursive call to print each element of homogeneous tuple
+ *
+ * @param ip address as homogeneous tuple
+ * @param out output stream, default is std::cout
+ */
 template<std::size_t index, class... Args>
 void print_ip(const std::tuple<Args...>& ip,
   std::ostream& out = std::cout,
@@ -84,7 +143,13 @@ void print_ip(const std::tuple<Args...>& ip,
     print_ip<index + 1, Args...>(ip);
   }
 }
- 
+
+/**
+ * @brief handles printing ip provided as homogeneous tuple to out stream
+ *
+ * @param ip address as homogeneous tuple
+ * @param out output stream, default is std::cout
+ */
 template<class... Args>
 void print_ip(const std::tuple<Args...>& ip,
   std::ostream& out = std::cout,
