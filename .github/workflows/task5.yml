@@ -2,9 +2,9 @@ name: Editor
 
 on:
   push:
-    branches: [ "tasks/04-editor" ]
+    branches: [ "tasks/05-editor" ]
   pull_request:
-    branches: [ "tasks/04-editor" ]
+    branches: [ "tasks/05-editor" ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
