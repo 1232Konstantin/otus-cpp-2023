@@ -43,6 +43,6 @@ namespace Editor
     bool isPressed;
     std::string Name;
     std::function<bool(const ArgumentType& Arg)> Func;
-    
+
   };
 }

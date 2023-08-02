@@ -13,35 +13,35 @@ FInputController::FInputController(const std::shared_ptr<IGUI>& InGui, const std
   : Gui(InGui), Storage(InStorage)
 {
   CreateDocumentBtn = std::make_shared<FInputButton<std::string>>(
-    "CreateDocument", 
-    true, 
+    "CreateDocument",
+    true,
     std::bind(&IStorage::CreateDocument, &(*Storage), std::placeholders::_1)
   );
-  
+
   ImportDocumentBtn = std::make_shared<FInputButton<std::string>>(
-    "ImportDocument", 
-    true, 
+    "ImportDocument",
+    true,
     std::bind(&IStorage::ImportDocument, &(*Storage), std::placeholders::_1)
   );
 
   ExportDocumentBtn = std::make_shared<FInputButton<std::string>>(
-    "ExportDocument", 
-    false, 
+    "ExportDocument",
+    false,
     std::bind(&IStorage::ExportDocument, &(*Storage), std::placeholders::_1)
   );
-  
+
   CreatePrimitiveBtn = std::make_shared<FInputButton<std::vector<std::pair<int, int>>>>(
-    "CreatePrimitive", 
-    false, 
+    "CreatePrimitive",
+    false,
     std::bind(&IStorage::CreatePrimitive, &(*Storage), std::placeholders::_1)
   );
 
   DeleteLastNPrimitivesBtn = std::make_shared<FInputButton<size_t>>(
-    "DeleteLastNPrimitives", 
-    false, 
+    "DeleteLastNPrimitives",
+    false,
     std::bind(&IStorage::DeleteLastNPrimitives, &(*Storage), std::placeholders::_1)
   );
-  
+
   Gui->Add(CreateDocumentBtn);
   Gui->Add(ImportDocumentBtn);
   Gui->Add(ExportDocumentBtn);
