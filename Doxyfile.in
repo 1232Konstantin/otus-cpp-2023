@@ -1,0 +1,9 @@
+PROJECT_NAME           = "print_ip"
+PROJECT_NUMBER         = @PROJECT_VESRION@
+PROJECT_BRIEF          = "Otus HW4: print_ip"
+OUTPUT_DIRECTORY       = ./doc/
+OUTPUT_LANGUAGE        = English
+GENERATE_LATEX         = NO
+EXTRACT_ALL            = YES
+INPUT                  = .
+RECURSIVE              = YES
