@@ -17,7 +17,7 @@ project ("Matrix" VERSION ${PROJECT_VESRION})
 # Add source to this project's executable.
 add_executable(
   Matrix 
-  matrix.cpp
+  main.cpp
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME}-${PROJECT_VESRION})
