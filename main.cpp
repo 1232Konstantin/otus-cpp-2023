@@ -39,16 +39,45 @@ int main()
 }
 #endif
 
-#include "matrix.h"
+#include <map>
+
+class Mat
+{
+public:
+
+  class Ref
+  {
+  public:
+    std::
+
+    Ref(const std::map<size_t, int>& inM, const size_t& inIndex)
+    {
+
+    }
+
+    operator int()
+    {
+
+    }
+
+  };
+
+  std::shared_ptr<std::map<size_t, int>> v;
+  int def = -1;
+
+  
+
+  Ref& operator[](const size_t& index)
+  {
+    return Ref(index, v);
+  }
+};
 
 int main()
 {
-  Matrix<int, -1, 3> m;
+  Mat m;
 
-  m[11][22][33] = 42;
-
-  auto v = m[11][22][33];
-  auto v2 = m[1][2][3];
+  auto v = m[42];
 
   return 0;
 }
