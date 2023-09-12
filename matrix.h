@@ -5,6 +5,7 @@
 
 #include <map>
 #include <array>
+#include <memory>
 
 template <class T, T DefaultValue, size_t Dimentions = 2>
 class Matrix
@@ -12,9 +13,10 @@ class Matrix
 private:
   using KeyT = std::array<size_t, Dimentions>;
   using StorageT = std::map<KeyT, T>;
+  using StorageTPtr = std::shared_ptr<std::map<KeyT, T>>;
   using StorageItT = typename StorageT::iterator;
 
-private:
+public:
 
   // https://www.artificialworlds.net/blog/2017/05/12/c-iterator-wrapperadaptor-example/
   // https://www.internalpointers.com/post/writing-custom-iterators-modern-cpp
@@ -61,19 +63,24 @@ private:
     }
   };
 
-  class Level<size_t OriginalDepth, size_t CurrentDepth>
+  template <size_t OriginalDepth, size_t CurrentDepth>
+  class Level
   {
-    KeyT Key;
-    std::shared_ptr<StorageT> Storage;
+  private:
 
-    Level(const int& inIndex, KeyT&& inKey, std::shared_ptr<StorageT> inStorage)
+    KeyT Key;
+    StorageTPtr Storage;
+
+  public:
+
+    Level(const size_t& inIndex, KeyT&& inKey, StorageTPtr inStorage)
       : Key(std::move(inKey))
       , Storage(std::move(inStorage))
     {
       Key[OriginalDepth - CurrentDepth] = inIndex;
     }
 
-    Level<OriginalDepth, CurrentDepth - 1>& operator[](const int& index)
+    Level<OriginalDepth, CurrentDepth - 1>& operator[](const size_t& index)
     {
       return Level<OriginalDepth, CurrentDepth - 1>(index, std::move(Key), Storage);
     }
@@ -82,20 +89,21 @@ private:
   template <size_t OriginalDepth>
   class Level<OriginalDepth, 2>
   {
-  public:
-    static constexpr bool isBottom = true;
+  private:
 
     KeyT Key;
-    std::shared_ptr<StorageT> Storage;
+    StorageTPtr Storage;
+  
+  public:
 
-    Level(const int& inIndex, KeyT&& inKey, std::shared_ptr<StorageT> inStorage)
+    Level(const size_t& inIndex, KeyT&& inKey, StorageTPtr inStorage)
       : Key(std::move(inKey))
       , Storage(std::move(inStorage))
     {
       Key[OriginalDepth - 2] = inIndex;
     }
 
-    T& operator[](const int& index)
+    T& operator[](const size_t& index)
     {
       Key[OriginalDepth - 1] = index;
       return Storage->operator[](Key);
@@ -103,29 +111,33 @@ private:
   };
 
 private:
-
-  StorageT Storage;
+  
+  StorageTPtr Storage;
 
 public:
 
-  Level<Dimentions, Dimentions>& operator[](size_t index)
+  Matrix()
+  {
+    Storage = std::make_shared<StorageT>();
+  }
+
+  Level<Dimentions, Dimentions>& operator[](const size_t& index)
   {
     return Level<Dimentions, Dimentions>(index, {}, Storage);
   }
 
   std::size_t size() const
   {
-    return Storage.size();
+    return Storage->size();
   }
 
   MatrixIt begin()
   {
-    return MatrixIt(Storage.begin());
+    return MatrixIt(Storage->begin());
   }
 
   MatrixIt end()
   {
-    return MatrixIt(Storage.end());
+    return MatrixIt(Storage->end());
   }
-
 };
