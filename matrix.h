@@ -37,8 +37,8 @@ public:
     }
 
     // same as in original iterator
-    bool operator==(const MatrixIt& other) const { return Wrapped.operator==(other); }
-    bool operator!=(const MatrixIt& other) const { return Wrapped.operator!=(other); }
+    bool operator==(const MatrixIt& other) const { return Wrapped.operator==(other.Wrapped); }
+    bool operator!=(const MatrixIt& other) const { return Wrapped.operator!=(other.Wrapped); }
     MatrixIt& operator++()
     {
       ++Wrapped;
@@ -60,6 +60,52 @@ public:
       auto temp = *this;
       --Wrapped;
       return temp;
+    }
+  };
+
+  class MatrixElement
+  {
+  private:
+
+    KeyT Key;
+    StorageTPtr Storage;
+
+  public:
+
+    MatrixElement(KeyT&& inKey, StorageTPtr inStorage)
+      : Key(std::move(inKey))
+      , Storage(std::move(inStorage))
+    {}
+
+    operator T()
+    {
+      if (Storage->count(Key))
+      {
+        return Storage->operator[](Key);
+      }
+      return DefaultValue;
+    }
+
+    MatrixElement& operator=(const T& obj)
+    {
+      Storage->operator[](Key) = obj;
+
+      if (Storage->operator[](Key) == DefaultValue)
+      {
+        Storage->erase(Key);
+      }
+      return *this;
+    }
+
+    MatrixElement& operator=(T&& obj)
+    {
+      Storage->operator[](Key) = std::move(obj);
+
+      if (Storage->operator[](Key) == DefaultValue)
+      {
+        Storage->erase(Key);
+      }
+      return *this;
     }
   };
 
@@ -103,10 +149,10 @@ public:
       Key[OriginalDepth - 2] = inIndex;
     }
 
-    T& operator[](const size_t& index)
+    MatrixElement& operator[](const size_t& index)
     {
       Key[OriginalDepth - 1] = index;
-      return Storage->operator[](Key);
+      return MatrixElement(std::move(Key), Storage);
     }
   };
 
