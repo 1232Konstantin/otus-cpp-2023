@@ -3,23 +3,48 @@
  * @author Dabudabot
  */
 
-#include <map>
+#include <unordered_map>
 #include <array>
 #include <memory>
 
+/**
+ * @breif Matrix class which should be used
+ */
 template <class T, T DefaultValue, size_t Dimentions = 2>
 class Matrix
 {
 private:
+
   using KeyT = std::array<size_t, Dimentions>;
-  using StorageT = std::map<KeyT, T>;
-  using StorageTPtr = std::shared_ptr<std::map<KeyT, T>>;
+
+  /**
+   * @breif we have to explain unordered_map how to use array as a key
+   * @reference https://stackoverflow.com/questions/42701688/using-an-unordered-map-with-arrays-as-keys
+   */
+  class ArrayHasher
+  {
+  public:
+    std::size_t operator()(const KeyT& a) const {
+      std::size_t h = 0;
+
+      for (const auto& e : a) {
+        h ^= std::hash<int>{}(e)+0x9e3779b9 + (h << 6) + (h >> 2);
+      }
+      return h;
+    }
+  };
+  
+  using StorageT = std::unordered_map<KeyT, T, ArrayHasher>;
+  using StorageTPtr = std::shared_ptr<StorageT>;
   using StorageItT = typename StorageT::iterator;
 
 public:
 
-  // https://www.artificialworlds.net/blog/2017/05/12/c-iterator-wrapperadaptor-example/
-  // https://www.internalpointers.com/post/writing-custom-iterators-modern-cpp
+  /**
+   * @breif wrapper class over default map iterator to be able get x y and value in foreach loop
+   * @reference https://www.artificialworlds.net/blog/2017/05/12/c-iterator-wrapperadaptor-example/
+   * @reference https://www.internalpointers.com/post/writing-custom-iterators-modern-cpp
+   */
   class MatrixIt
   {
   private:
@@ -63,6 +88,9 @@ public:
     }
   };
 
+  /**
+   * @breif basically this is returned by key in order not to create object with default value
+   */
   class MatrixElement
   {
   private:
@@ -109,6 +137,9 @@ public:
     }
   };
 
+  /**
+   * @breif SFINAE class recursivly created from top level to bottom
+   */
   template <size_t OriginalDepth, size_t CurrentDepth>
   class Level
   {
@@ -132,6 +163,9 @@ public:
     }
   };
 
+  /**
+   * @breif SFINAE bottom of the recursion
+   */
   template <size_t OriginalDepth>
   class Level<OriginalDepth, 2>
   {

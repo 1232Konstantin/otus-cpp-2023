@@ -4,7 +4,7 @@
 
 int main()
 {
-  Matrix<int, -1, 2> mat;
+  Matrix<int, 0, 2> mat;
 
   for (int i = 0; i < 10; ++i)
   {
