@@ -28,7 +28,7 @@ private:
       std::size_t h = 0;
 
       for (const auto& e : a) {
-        h ^= std::hash<int>{}(e)+0x9e3779b9 + (h << 6) + (h >> 2);
+        h ^= std::hash<size_t>{}(e)+0x9e3779b9 + (h << 6) + (h >> 2);
       }
       return h;
     }

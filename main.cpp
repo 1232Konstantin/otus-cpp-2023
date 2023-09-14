@@ -27,7 +27,8 @@ int main()
 
   for (const auto& c : mat)
   {
-    int x, y, v;
+    size_t x, y;
+    int v;
     std::tie(x, y, v) = c;
     std::cout << "X = " << x << " Y = " << y << " V = " << v << '\n';
   }
