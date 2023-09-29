@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[])
 {
-    size_t BulkSize = 1;
+    size_t BulkSize = 3;
 
     if (2 == argc)
     {

@@ -6,9 +6,9 @@
 
 namespace Bulk
 {
-    class FCmdCommandLogger : public ICommandLogger
-    {
-    public:
-        virtual void Log(const std::string& str) override;
-    };
+  class FCmdCommandLogger : public ICommandLogger
+  {
+  public:
+    virtual void Log(const std::string& str) override;
+  };
 }

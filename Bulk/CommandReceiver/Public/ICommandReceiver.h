@@ -12,48 +12,48 @@
 
 namespace Bulk
 {
-    using OnCommandReceived = std::function<void (const std::string&, bool)>;
+  using OnCommandReceived = std::function<void(const std::string& /*ReceivedRawCommand*/, bool /*isEOF*/)>;
+
+  /**
+   * @breif Interface for receiving commands
+   */
+  class ICommandReceiver
+  {
+  protected:
+
+    OnCommandReceived CommandReceivedCallback;
 
     /**
-     * @breif Interface for receiving commands
+     * @breif Ctor which accepts callback
      */
-    class ICommandReceiver
-    {
-    protected:
+    explicit ICommandReceiver(const OnCommandReceived& inCommandReceivedCallback)
+      : CommandReceivedCallback(inCommandReceivedCallback)
+    {}
 
-        OnCommandReceived CommandReceivedCallback;
+  public:
 
-        /**
-         * @breif Ctor which accepts callback
-         */
-        explicit ICommandReceiver(const OnCommandReceived& inCommandReceivedCallback)
-            : CommandReceivedCallback(inCommandReceivedCallback)
-        {}
-
-    public:
-
-        virtual ~ICommandReceiver() = default;
-
-        /**
-         * @breif Loop until EOF waiting for commands and sending them to the callback
-         * @return false if crashes, true if exits normally
-         */
-        virtual bool Begin() = 0;
-
-        friend class CommandReceiverFactory;
-    };
+    virtual ~ICommandReceiver() = default;
 
     /**
-     * @breif Factory to build specific CommandReceiver
+     * @breif Loop until EOF waiting for commands and sending them to the callback
+     * @return false if crashes, true if exits normally
      */
-    class CommandReceiverFactory
-    {
-    public:
+    virtual bool Begin() = 0;
 
-        /**
-         * @breif create CommandReceiver object
-         * @return shared pointer to the CommandReceiver
-         */
-        static std::shared_ptr<ICommandReceiver> Create(const OnCommandReceived& inCommandReceivedCallback);
-    };
+    friend class CommandReceiverFactory;
+  };
+
+  /**
+   * @breif Factory to build specific CommandReceiver
+   */
+  class CommandReceiverFactory
+  {
+  public:
+
+    /**
+     * @breif create CommandReceiver object
+     * @return shared pointer to the CommandReceiver
+     */
+    static std::shared_ptr<ICommandReceiver> Create(const OnCommandReceived& inCommandReceivedCallback);
+  };
 }

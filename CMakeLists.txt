@@ -19,6 +19,10 @@ add_executable(
   Bulk 
   main.cpp
   Bulk/App.cpp
+  Bulk/CommandReceiver/Private/CmdCommandReceiver.cpp
+  Bulk/CommandExecutor/Private/SimpleCommandExecutor.cpp
+  Bulk/CommandLogger/Private/CmdCommandLogger.cpp
+  Bulk/Command/Private/SimpleCommand.cpp
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME}-${PROJECT_VESRION})
@@ -32,4 +36,5 @@ include_directories(
   "Bulk/CommandExecutor/Public"
   "Bulk/CommandLogger/Public"
   "Bulk/Command/Public"
+  "Bulk"
 )

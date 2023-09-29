@@ -4,12 +4,12 @@
 
 namespace Bulk
 {
-    class FCmdCommandReceiver : public ICommandReceiver
-    {
-    public:
+  class FCmdCommandReceiver : public ICommandReceiver
+  {
+  public:
 
-        explicit FCmdCommandReceiver(const OnCommandReceived& inCommandReceivedCallback);
+    explicit FCmdCommandReceiver(const OnCommandReceived& inCommandReceivedCallback);
 
-        virtual bool Begin() override;
-    };
+    virtual bool Begin() override;
+  };
 }

@@ -1,15 +1,16 @@
 #include "CmdCommandLogger.h"
 
 #include <memory>
+#include <iostream>
 
 using namespace Bulk;
 
 std::shared_ptr<ICommandLogger> CommandLoggerFactory::Create()
 {
-    return std::make_shared<FCmdCommandLogger>();
+  return std::make_shared<FCmdCommandLogger>();
 }
 
 void FCmdCommandLogger::Log(const std::string& str)
 {
-    // TODO print to cmd
+  std::cout << str << std::endl;
 }
