@@ -29,6 +29,9 @@ struct TCustomAllocator {
     {
       addresses.push(reinterpret_cast<T*>(block.get()) + i);
     }
+    //Konstantin : На мой взгляд предложенная реализация хранилища с индексацией каждого участка памяти размера sizeof(T) не всегда удобна. 
+    //При малых размерах Т накладные расходы могут составлять существенную часть выделенной памяти
+    
   }
 
   explicit TCustomAllocator(std::size_t inBlockSize)
@@ -46,12 +49,14 @@ struct TCustomAllocator {
     , blocks(a.blocks)
     , addresses(a.addresses)
   {}
+//Konstantin : На мой взгляд предложенная версия конструктора копирования не корректна потому что размеры классов U и T в общем случае могут не совпадать, тогда простое копирование
+//стэка addresses приведет к неправильному набору адресов, не подходящему для размещения объектов класса Т
 
   T* allocate(std::size_t n)
   {
     if (n != 1)
     {
-      throw std::bad_alloc();
+      throw std::bad_alloc(); //Konstantin : Не совсем понятно, почему контейнер используюший аллокатор не должен запрашивать размещение более чем одного объекта за раз
     }
 
     if (addresses.empty())
@@ -65,14 +70,14 @@ struct TCustomAllocator {
     return addr;
   }
 
-  void deallocate(T* p, std::size_t n)
+  void deallocate(T* p, std::size_t n) 
   {
     if (!p)
     {
       return;
     }
 
-    if (n != 1)
+    if (n != 1)  //Konstantin : Не совсем понятно, почему контейнер используюший аллокатор не должен запрашивать удаления более чем одного объекта за раз
     {
       throw std::bad_alloc();
     }
@@ -90,13 +95,13 @@ struct TCustomAllocator {
 template <class T, class U>
 constexpr bool operator== (const TCustomAllocator<T>& a1, const TCustomAllocator<U>& a2) noexcept
 {
-  return true;
+  return true; //Konstantin : Не совсем понятно, почему аллокаторы всегда равны. На мой взгляд это не так (ведь есть изменяемые члены внутри класса)
 }
 
 template <class T, class U>
 constexpr bool operator!= (const TCustomAllocator<T>& a1, const TCustomAllocator<U>& a2) noexcept
 {
-  return false;
+  return false;  
 }
 
 template <class T, class Allocator = std::allocator<T>>
@@ -162,11 +167,11 @@ public:
   {}
 
   TContainer(const TContainer& other)
-    : _allocator(other._allocator)
+    : _allocator(other._allocator) //Konstantin :здесь мы забираем аллокатор из копируемого контейнера и фактически оба контейнера ссылаются на одни ресурсы
   {
     for (const auto& i : other)
     {
-      push(i);
+      push(i); //Konstantin : поскольку оба контейнера используют теперь одни и те же ресурсы проще было бы забрать себе и стек из элементов Node 
     }
   }
 
@@ -203,6 +208,7 @@ public:
       _allocator.deallocate(current, 1);
       current = next;
     }
+    //Konstantin :Из-за особенностей аллокатора очистка контейнера проходит по одному элементу. Может быть накладно
 
     _head = nullptr;
     _last = nullptr;
@@ -216,6 +222,7 @@ public:
   Iterator end() const
   {
     return Iterator(nullptr);
+    
   }
 };
 
